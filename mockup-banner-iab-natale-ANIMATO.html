@@ -49,9 +49,11 @@ body{margin:0;font-family:var(--f);background:#eef4f8;color:var(--navy);padding:
 .slot .a img{flex:1 1 auto;min-height:0;width:100%;object-fit:contain;}
 .slot .a.on{opacity:1;transform:none;}
 .slot.s1 .a{transition-delay:.15s;} .slot.s2 .a{transition-delay:.3s;}
-.slot .a.photo{padding:0 !important;} .slot .a.photo img{height:100%;object-fit:cover;}
-/* foto ritagliate senza testo e logo stampati: p1 tiene mamma e bimbo, p2 la mamma col passeggino */
-.slot .a.p1 img{object-position:46% 50%;} .slot .a.p2 img{object-position:60% 50%;}
+/* foto: intera (niente tagli su bimbo o passeggino), lo spazio intorno lo riempie la stessa foto sfocata */
+.slot .a.photo{position:relative;isolation:isolate;overflow:hidden;}
+.slot .a.photo img{filter:drop-shadow(0 2px 6px rgba(0,40,80,.22));}
+.slot .a img.bl{position:absolute;inset:0;z-index:-1;height:100%;object-fit:cover;filter:blur(10px) saturate(1.15);opacity:.5;scale:1.3;}
+.slot .a.photo .cap{background:rgba(255,255,255,.88);border-radius:999px;padding:2px 8px;}
 .slot.hid{transform:none !important;}
 .cap{display:none;flex:none;max-width:100%;font-size:11px;font-weight:700;line-height:1.15;text-align:center;color:var(--navy);}
 .stk{position:absolute;z-index:3;top:7px;right:7px;width:var(--sz,40px);height:var(--sz,40px);border-radius:50%;background:var(--acc);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;rotate:-12deg;box-shadow:0 2px 6px rgba(0,0,0,.18);transition:background-color .9s ease;}
